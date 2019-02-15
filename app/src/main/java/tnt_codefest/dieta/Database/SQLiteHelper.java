@@ -1,5 +1,6 @@
 package tnt_codefest.dieta.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -49,4 +50,31 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + USER_TABLE);
         onCreate(db);
     }
+
+    // GET METHODS
+
+    public boolean addUser(String userName, String firstName, String lastName, double height, double weight, double bmi, int current_week){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USER_USERNAME, userName);
+        contentValues.put(USER_FIRSTNAME, firstName);
+        contentValues.put(USER_LASTNAME, lastName);
+        contentValues.put(USER_HEIGHT, height);
+        contentValues.put(USER_WEIGHT, weight);
+        contentValues.put(USER_BMI, bmi);
+        contentValues.put(CURRENT_WEEK, current_week);
+
+        long results = db.insert(USER_TABLE, null, contentValues);
+
+        if(results == -1)
+            return false;
+        else
+            return true;
+
+    }
+
+
+
 }
