@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
 
+    // New Changes
+
     // Database Details
     private static final String DATABASE_NAME = "dieata.db";
     private static int DATABASE_VERSION = 1;
